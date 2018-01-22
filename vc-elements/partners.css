@@ -1,0 +1,23 @@
+.partners-box{
+    margin: 25px 0px;
+}
+
+.partner-contact a{
+  color: #003472;
+}
+.partner-contact a:hover{
+  color: #003472;
+}
+
+.partner-name{
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+
+.partner-title{
+  color: #003472;
+}
+
+.partner-image{
+  width: 100%;
+}
