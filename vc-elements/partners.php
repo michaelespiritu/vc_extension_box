@@ -17,7 +17,7 @@ class vcPartnersBox extends WPBakeryShortCode {
 
     function front_end_css(){
 
-        wp_enqueue_style( 'partners-css', get_stylesheet_directory_uri().'/vc-elements/partners.css', '', '' );
+        wp_enqueue_style( 'partners-css', get_stylesheet_directory_uri().'/vc-elements/css/partners.css', '', '' );
 
     }
 
@@ -36,7 +36,7 @@ class vcPartnersBox extends WPBakeryShortCode {
               'base' => 'vc_partners_box',
               'description' => __('Partners VC box', $text_domain),
               'category' => __('My Custom Elements', $text_domain),
-              'icon' => get_stylesheet_directory_uri().'/vc-elements/assets/vc_icon.png',
+              'icon' => get_stylesheet_directory_uri().'/vc-elements/assets/vc_icon_partners.png',
               'params' => array(
 
                   array(
@@ -45,7 +45,6 @@ class vcPartnersBox extends WPBakeryShortCode {
                       'class' => 'partners-name',
                       'heading' => __( 'Name', $text_domain ),
                       'param_name' => 'partnername',
-                      'value' => __( '', 'text-domain' ),
                       'admin_label' => false,
                       'weight' => 0,
                       'group' => 'Custom Group',
@@ -57,7 +56,6 @@ class vcPartnersBox extends WPBakeryShortCode {
                       'class' => 'partners-title',
                       'heading' => __( 'Title', $text_domain ),
                       'param_name' => 'title',
-                      'value' => __( '', $text_domain ),
                       'admin_label' => false,
                       'weight' => 0,
                       'group' => 'Custom Group',
@@ -69,7 +67,6 @@ class vcPartnersBox extends WPBakeryShortCode {
                       'class' => 'partners-description',
                       'heading' => __( 'Partners Description', $text_domain ),
                       'param_name' => 'content',
-                      'value' => __( '', $text_domain ),
                       'admin_label' => false,
                       'weight' => 0,
                       'group' => 'Custom Group',
@@ -81,7 +78,6 @@ class vcPartnersBox extends WPBakeryShortCode {
                       'class' => 'partners-number',
                       'heading' => __( 'Phone Number', $text_domain ),
                       'param_name' => 'phonenumber',
-                      'value' => __( '', $text_domain ),
                       'admin_label' => false,
                       'weight' => 0,
                       'group' => 'Custom Group',
@@ -93,7 +89,6 @@ class vcPartnersBox extends WPBakeryShortCode {
                       'class' => 'partners-email',
                       'heading' => __( 'Email', $text_domain ),
                       'param_name' => 'email',
-                      'value' => __( '', $text_domain ),
                       'admin_label' => false,
                       'weight' => 0,
                       'group' => 'Custom Group',
@@ -104,7 +99,6 @@ class vcPartnersBox extends WPBakeryShortCode {
                       'class' => 'partners-image',
                       'heading' => __( 'Image', $text_domain ),
                       'param_name' => 'partnersimage',
-                      'value' => __( '', $text_domain ),
                       'admin_label' => false,
                       'weight' => 0,
                       'group' => 'Custom Group',
@@ -120,7 +114,7 @@ class vcPartnersBox extends WPBakeryShortCode {
 
     public function vc_partners_html( $atts , $content = null) {
 
-    
+
       extract(
           shortcode_atts(
               array(

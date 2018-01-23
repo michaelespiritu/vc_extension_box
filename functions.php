@@ -5,7 +5,7 @@
  */
 
 
-//Add the line below to functions.php of theme 
+//Add the line below to functions.php of theme
 
  if ( is_plugin_active( 'js_composer/js_composer.php' ) ) {
 
@@ -18,7 +18,10 @@
 }
 
 function vc_before_init_actions() {
-  //echo get_stylesheet_directory(); die;
+
     require_once( get_stylesheet_directory().'/vc-elements/partners.php' );
+    require_once( get_stylesheet_directory().'/vc-elements/testimonials.php' );
+    require_once( get_stylesheet_directory().'/vc-elements/bulletinboard.php' );
+    require_once( get_stylesheet_directory().'/vc-elements/simple-image-box-with-label.php' );
 
 }
