@@ -88,13 +88,42 @@ class vcSimpleImageWithLabelBox extends WPBakeryShortCode {
 
                   array(
                       'type' => 'dropdown',
+                      'class' => 'siwl-title-text-align',
+                      'heading' => __( 'Title Text Alignment', $text_domain ),
+                      'param_name' => 'siwltitletextalign',
+                      'admin_label' => false,
+                      'value'       => array(
+                        'Center'   => 'center',
+                        'Left'   => 'left',
+                        'Right'   => 'right'
+                      ),
+                      'weight' => 0,
+                      'group' => 'Custom Group',
+                  ),
+
+
+                  array(
+                      'type' => 'textfield',
+                      'class' => 'siwl-title-padding',
+                      'heading' => __( 'Title Padding', $text_domain ),
+                      'param_name' => 'siwltitlepadding',
+                      'admin_label' => false,
+                      'value' => __( '0px', $text_domain ),
+                      'weight' => 0,
+                      'group' => 'Custom Group',
+                  ),
+
+                  array(
+                      'type' => 'dropdown',
                       'class' => 'siwl-title-location',
                       'heading' => __( 'Title Location', $text_domain ),
                       'param_name' => 'siwltitlelocation',
                       'admin_label' => false,
                       'value'       => array(
                         'Top'   => 'top',
-                        'Bottom'   => 'bottom'
+                        'Bottom'   => 'bottom',
+                        'Left'   => 'left',
+                        'Right'   => 'right'
                       ),
                       'weight' => 0,
                       'group' => 'Custom Group',
@@ -130,6 +159,8 @@ class vcSimpleImageWithLabelBox extends WPBakeryShortCode {
                   'siwltitlebgcolor'   => '',
                   'siwltitlecolor'   => '',
                   'siwltitlefontsize'   => '',
+                  'siwltitletextalign'   => '',
+                  'siwltitlepadding'   => '',
                   'siwltitlelocation' => '',
                   'siwlimage' => ''
               ),
@@ -139,37 +170,71 @@ class vcSimpleImageWithLabelBox extends WPBakeryShortCode {
 
       $img = wp_get_attachment_image_src($siwlimage, "large");
 
-      $style = "style='text-align: center; color: #ffffff; background-color: #000000;' ";
-      $color = "color: #fff;";
-      $fontsize = "font-size: 13px;";
+
+      $titlebgcolor = "background-color: none;";
+      $titlecolor = "color: #fff;";
+      $titlefontsize = "font-size: 13px;";
+      $titlepadding = "padding: 0px;";
+      $titletextalign = "text-align: center;";
 
       if( !empty($siwltitlecolor) ){
 
-        $color = "color: {$siwltitlecolor};";
+        $titlecolor = "color: {$siwltitlecolor};";
+
+      }
+
+      if( !empty($siwltitlepadding) ){
+
+        $titlepadding = "padding: {$siwltitlepadding};";
+
+      }
+
+      if( !empty($siwltitletextalign) ){
+
+        $titletextalign = "text-align: {$siwltitletextalign};";
 
       }
 
       if( !empty($siwltitlefontsize) ){
 
-        $fontsize = "font-size: {$siwltitlefontsize};";
+        $titlefontsize = "font-size: {$siwltitlefontsize};";
 
       }
 
       if( !empty($siwltitlebgcolor) ){
 
-        $style = "style='text-align: center; color: #ffffff;  background-color: {$siwltitlebgcolor}' ";
+        $titlebgcolor = "background-color: {$siwltitlebgcolor}; ";
 
       }
 
       if( !empty($siwltitle) ){
 
-        $siwltitle = "<div class='siwl-title' {$style}><h3><a href='{$siwllink}' style='{$color}{$fontsize}'>{$siwltitle}</a></h3></div>";
+        if(!empty($siwllink)){
+
+          $siwltitle = "<div class='siwl-title' style='{$titlebgcolor}{$titletextalign}{$titlepadding}'><h3><a href='{$siwllink}' style='{$titlecolor}{$titlefontsize}'>{$siwltitle}</a></h3></div>";
+
+        }else{
+
+          $siwltitle = "<div class='siwl-title' style='{$titlebgcolor}{$titletextalign}{$titlepadding}'><h3 style='{$titlecolor}{$titlefontsize}'>{$siwltitle}</h3></div>";
+
+        }
+
 
       }
 
       if( !empty($siwlimage) ){
 
-        $siwlimage = "<div class='siwl-img'><a href='{$siwllink}'><img src='{$img[0]}'></a></div>";
+        if(!empty($siwllink)){
+
+          $siwlimage = "<div class='siwl-img'><a href='{$siwllink}'><img src='{$img[0]}'></a></div>";
+
+        }else{
+
+          $siwlimage = "<div class='siwl-img'><img src='{$img[0]}'></div>";
+
+        }
+
+
 
       }
 
@@ -187,6 +252,37 @@ class vcSimpleImageWithLabelBox extends WPBakeryShortCode {
 
                 $html .= $siwlimage;
                 $html .= $siwltitle;
+
+              break;
+
+            case 'left':
+                $html .= "<div class='vc_row'>";
+
+                  $html .= "<div class='vc_col-sm-9'>";
+                    $html .= $siwltitle;
+                  $html .= "</div>";
+
+                  $html .= "<div class='vc_col-sm-3'>";
+                    $html .= $siwlimage;
+                  $html .= "</div>";
+
+                $html .= "</div>";
+              break;
+
+            case 'right':
+
+            $html .= "<div class='vc_row'>";
+
+                $html .= "<div class='vc_col-sm-3'>";
+                  $html .= $siwlimage;
+                $html .= "</div>";
+
+              $html .= "<div class='vc_col-sm-9'>";
+                $html .= $siwltitle;
+              $html .= "</div>";
+
+
+            $html .= "</div>";
 
               break;
 
