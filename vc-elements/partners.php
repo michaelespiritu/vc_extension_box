@@ -134,14 +134,14 @@ class vcPartnersBox extends WPBakeryShortCode {
       $html = "<div class='partners-box vc_row'>";
 
       $html .= "<div class='vc_col-sm-3'>";
-      $html .= "<p><img src='{$img[0]}' class='partner-image'></p>";
+      $html .= "<div  class='partner-image'><img src='{$img[0]}'></div>";
       $html .= "</div>";
 
       $html .= "<div class='vc_col-sm-9'>";
       $html .= "<h4 class='partner-name'>{$partnername}</h4>";
       $html .= "<h6 class='partner-title'>{$title}</h6>";
       $html .= "<p>{$content}</p>";
-      $html .= "<p class='partner-contact'>{$phonenumber}<br><a href='{$email}'>{$email}</a></p>";
+      $html .= "<p class='partner-contact'>{$phonenumber}<br><a href='mailto: {$email}'>{$email}</a></p>";
       $html .= "</div>";
 
       $html .= "</div>";

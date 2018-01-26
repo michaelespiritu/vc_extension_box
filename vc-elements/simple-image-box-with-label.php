@@ -258,11 +258,11 @@ class vcSimpleImageWithLabelBox extends WPBakeryShortCode {
             case 'left':
                 $html .= "<div class='vc_row'>";
 
-                  $html .= "<div class='vc_col-sm-9'>";
+                  $html .= "<div class='vc_col-xs-12 vc_col-sm-12 vc_col-md-9'>";
                     $html .= $siwltitle;
                   $html .= "</div>";
 
-                  $html .= "<div class='vc_col-sm-3'>";
+                  $html .= "<div class='vc_col-xs-12 vc_col-sm-12 vc_col-md-3'>";
                     $html .= $siwlimage;
                   $html .= "</div>";
 
@@ -273,11 +273,11 @@ class vcSimpleImageWithLabelBox extends WPBakeryShortCode {
 
             $html .= "<div class='vc_row'>";
 
-                $html .= "<div class='vc_col-sm-3'>";
+                $html .= "<div class='vc_col-xs-12 vc_col-sm-12 vc_col-md-3'>";
                   $html .= $siwlimage;
                 $html .= "</div>";
 
-              $html .= "<div class='vc_col-sm-9'>";
+              $html .= "<div class='vc_col-xs-12 vc_col-sm-12 vc_col-md-9'>";
                 $html .= $siwltitle;
               $html .= "</div>";
 

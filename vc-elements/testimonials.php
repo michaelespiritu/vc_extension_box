@@ -53,6 +53,16 @@ class vcTestimonialsBox extends WPBakeryShortCode {
                       'group' => 'Custom Group',
                   ),
 
+                  array(
+                      'type' => 'textfield',
+                      'class' => 'testimonial-class',
+                      'heading' => __( 'Class', $text_domain ),
+                      'param_name' => 'testimonialclass',
+                      'admin_label' => false,
+                      'weight' => 0,
+                      'group' => 'Custom Group',
+                  ),
+
               )
           )
       );
@@ -67,7 +77,8 @@ class vcTestimonialsBox extends WPBakeryShortCode {
       extract(
           shortcode_atts(
               array(
-                  'testimonialimage'   => ''
+                  'testimonialimage'   => '',
+                  'testimonialclass' => ''
               ),
               $atts
           )
@@ -75,7 +86,7 @@ class vcTestimonialsBox extends WPBakeryShortCode {
 
       $content = wpb_js_remove_wpautop($content, true);
 
-      $html = "<div class='testimonial-box'>";
+      $html = "<div class='testimonial-box {$testimonialclass}'>";
 
         if( !empty($testimonialimage) ){
 
@@ -86,7 +97,7 @@ class vcTestimonialsBox extends WPBakeryShortCode {
 
         if( !empty($content) ){
 
-          $html .= "<p class='testimonial-name'>{$content}</p>";
+          $html .= "<div class='testimonial-body'>{$content}</div>";
 
         }
 
